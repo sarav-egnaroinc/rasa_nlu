@@ -110,6 +110,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#endpoints">Endpoints</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#post-parse-no-emulation"><code class="docutils literal"><span class="pre">POST</span> <span class="pre">/parse</span></code> (no emulation)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#post-train"><code class="docutils literal"><span class="pre">POST</span> <span class="pre">/train</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#post-evaluate"><code class="docutils literal"><span class="pre">POST</span> <span class="pre">/evaluate</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#get-status"><code class="docutils literal"><span class="pre">GET</span> <span class="pre">/status</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#get-version"><code class="docutils literal"><span class="pre">GET</span> <span class="pre">/version</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#get-config"><code class="docutils literal"><span class="pre">GET</span> <span class="pre">/config</span></code></a></li>
@@ -263,6 +264,35 @@ configuration section by passing in their name and the adjusted value.</p>
 </pre></div>
 </div>
 <p>You cannot send a training request for a project already training a new model (see below).</p>
+</div>
+<div class="section" id="post-evaluate">
+<h3><code class="docutils literal"><span class="pre">POST</span> <span class="pre">/evaluate</span></code><a class="headerlink" href="#post-evaluate" title="Permalink to this headline">¶</a></h3>
+<p>You can use this endpoint to evaluate data on a model. The query string
+takes the <code class="docutils literal"><span class="pre">project</span></code> (required) and a <code class="docutils literal"><span class="pre">model</span></code> (optional). You must
+specify the project in which the model is located. N.b. if you don&#8217;t specify
+a model, the latest one will be selected. This endpoint returns some common
+sklearn  evaluation metrics (<a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html#sklearn.metrics.accuracy_score">accuracy</a>, <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html">f1 score</a>,
+<a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html">precision</a>, as well as
+a summary <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html">report</a>).</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl -XPOST localhost:5000/evaluate?project<span class="o">=</span>my_project<span class="p">&amp;</span><span class="nv">model</span><span class="o">=</span>model_XXXXXX -d @data/examples/rasa/demo-rasa.json <span class="p">|</span> python -mjson.tool
+
+<span class="o">{</span>
+    <span class="s2">&quot;accuracy&quot;</span>: <span class="m">0</span>.19047619047619047,
+    <span class="s2">&quot;f1_score&quot;</span>: <span class="m">0</span>.06095238095238095,
+    <span class="s2">&quot;precision&quot;</span>: <span class="m">0</span>.036281179138321996,
+    <span class="s2">&quot;predictions&quot;</span>: <span class="o">[</span>
+        <span class="o">{</span>
+            <span class="s2">&quot;intent&quot;</span>: <span class="s2">&quot;greet&quot;</span>,
+            <span class="s2">&quot;predicted&quot;</span>: <span class="s2">&quot;greet&quot;</span>,
+            <span class="s2">&quot;text&quot;</span>: <span class="s2">&quot;hey&quot;</span>,
+            <span class="s2">&quot;confidence&quot;</span>: <span class="m">1</span>.0
+        <span class="o">}</span>,
+        ...,
+    <span class="o">]</span>
+    <span class="s2">&quot;report&quot;</span>: ...
+<span class="o">}</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="get-status">
 <h3><code class="docutils literal"><span class="pre">GET</span> <span class="pre">/status</span></code><a class="headerlink" href="#get-status" title="Permalink to this headline">¶</a></h3>
