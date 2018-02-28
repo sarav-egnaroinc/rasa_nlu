@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; rasa NLU 0.12.0a1 documentation</title>
+  <title>Community Contributions &mdash; rasa NLU 0.12.0a1 documentation</title>
   
 
   
@@ -36,8 +36,10 @@
   
         <link rel="index" title="Index"
               href="genindex.html"/>
-        <link rel="search" title="Search" href="#"/>
+        <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="rasa NLU 0.12.0a1 documentation" href="index.html"/>
+        <link rel="next" title="Contributing" href="contribute.html"/>
+        <link rel="prev" title="License" href="license.html"/>
 <link href="_static/css/rasa_theme.css" rel="stylesheet" type="text/css">
 
 
@@ -75,7 +77,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -115,8 +117,13 @@
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Resources</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="community.html">Community Contributions</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Community Contributions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#community-written-documentation">Community Written Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#community-open-source-tools-software">Community Open Source Tools/Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#video-tutorials">Video Tutorials</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Documentation</span></p>
 <ul>
@@ -167,12 +174,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Search</li>
+      <li>Community Contributions</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/community.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -184,19 +193,78 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search
-      functionality.
-    </p>
-  </div>
-  </noscript>
+  
 
-  
-  <div id="search-results">
-  
-  </div>
+
+    
+    
+
+
+
+    <p class="scv-banner scv-sphinx_rtd_theme"><b>Warning:</b> This document is for the development version of rasa NLU.</p>
+<div class="section" id="community-contributions">
+<span id="section-community"></span><h1>Community Contributions<a class="headerlink" href="#community-contributions" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is an (incomplete) list of external resources created by the Rasa community.
+We list them here because they can help you learn about the Rasa Stack, but they are
+not officially endorsed by Rasa and we cannot promise that they will be kept up-to-date
+as the project evolves.</p>
+</div>
+<div class="section" id="community-written-documentation">
+<h2>Community Written Documentation<a class="headerlink" href="#community-written-documentation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>A three part tutorial on using Rasa NLU in combination with Node-RED to create a basic chat bot and integrate it with Slack and Twilio.</dt>
+<dd><ul class="first last">
+<li><a class="reference external" href="https://blog.spg.ai/build-a-chatbot-with-rasa-nlu-dc2bfb55edb2">Part 1</a> - Installation, Education, and Model Training</li>
+<li><a class="reference external" href="https://blog.spg.ai/build-a-chatbot-with-rasa-nlu-part-two-8d533a0cfda8">Part 2</a> - Back end fulfillment using Node-RED</li>
+<li><a class="reference external" href="https://blog.spg.ai/build-a-chatbot-was-rasa-nlu-part-3-b53c61954e86">Part 3</a> - A Complete Chatbot on Slack and Twilio</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Documentation on using Rasa NLU with Docker</dt>
+<dd><ul class="first last">
+<li><a class="reference external" href="https://blog.spg.ai/using-rasa-nlu-with-docker-96b86856b392">Using Rasa NLU with Docker</a> - The easiest way to get started working with Rasa</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><a class="reference external" href="https://blog.spg.ai/failing-gracefully-with-rasa-nlu-14a7d8e53af9">Failing Gracefully with Rasa NLU</a></li>
+</ul>
+</div>
+<div class="section" id="community-open-source-tools-software">
+<h2>Community Open Source Tools/Software<a class="headerlink" href="#community-open-source-tools-software" title="Permalink to this headline">¶</a></h2>
+<p>Below is a list of tools and applications written around or for Rasa NLU using a permissive license.</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Postgres backed UI for interacting with Rasa NLU</dt>
+<dd><ul class="first last">
+<li><a class="reference external" href="https://github.com/paschmann/rasa-ui">Rasa UI</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>A tool for generating training examples from a list of entities</dt>
+<dd><ul class="first last">
+<li><a class="reference external" href="https://github.com/rodrigopivi/Chatito">Chatito</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="video-tutorials">
+<h2>Video Tutorials<a class="headerlink" href="#video-tutorials" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Talk about the Rasa Stack at <a class="reference external" href="https://www.youtube.com/watch?v=LEFF7-_uh3M">PyData</a></li>
+</ul>
+</div>
+</div>
+
 
            </div>
            <div class="articleComments">
@@ -204,6 +272,15 @@
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="contribute.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="license.html" class="btn btn-neutral" title="License" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -245,7 +322,7 @@
         </dl>
         <dl>
             <dt>Branches</dt>
-            <dd><a href="search.html">master</a></dd>
+            <dd><a href="community.html">master</a></dd>
         </dl>
     </div>
 </div>
@@ -268,7 +345,6 @@
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
       <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-      <script type="text/javascript" src="_static/searchtools.js"></script>
 
   
 
@@ -285,12 +361,6 @@
       });
   </script>
   
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
-  
  
 <!-- Global Site Tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-87333416-3"></script>
@@ -301,7 +371,6 @@ gtag('js', new Date());
 
 gtag('config', 'UA-87333416-3');
 </script>
-
 
 
 </body>

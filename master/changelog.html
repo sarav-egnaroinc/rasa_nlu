@@ -115,6 +115,10 @@
 <li class="toctree-l1"><a class="reference internal" href="migrations.html">Migration Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community Contributions</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Developer Documentation</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference external" href="https://github.com/RasaHQ/rasa_nlu/projects/2">Roadmap</a></li>
@@ -352,10 +356,13 @@ This project adheres to <a class="reference external" href="http://semver.org/">
 <div class="section" id="changed">
 <h3>Changed<a class="headerlink" href="#changed" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Regex features are now sorted internally. <strong>retrain your model if you use regex features</strong></li>
-<li>The keyword intent classifier now returns <code class="docutils literal"><span class="pre">null</span></code> instead of <code class="docutils literal"><span class="pre">&quot;None&quot;</span></code> as intent name in the json result</li>
+<li>Regex features are now sorted internally.
+<strong>retrain your model if you use regex features</strong></li>
+<li>The keyword intent classifier now returns <code class="docutils literal"><span class="pre">null</span></code> instead
+of <code class="docutils literal"><span class="pre">&quot;None&quot;</span></code> as intent name in the json result if there&#8217;s no match</li>
+<li>in teh evaluation results, replaced <code class="docutils literal"><span class="pre">O</span></code> with the string
+<code class="docutils literal"><span class="pre">no_entity</span></code> for better understanding</li>
 </ul>
-<p>if there&#8217;s no match</p>
 </div>
 <div class="section" id="fixed">
 <h3>Fixed<a class="headerlink" href="#fixed" title="Permalink to this headline">¶</a></h3>
