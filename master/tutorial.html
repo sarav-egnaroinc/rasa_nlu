@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tutorial: A simple restaurant search bot &mdash; rasa NLU 0.12.0a1 documentation</title>
+  <title>Tutorial: A simple restaurant search bot &mdash; rasa NLU 0.12.0a2 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="rasa NLU 0.12.0a1 documentation" href="index.html"/>
+    <link rel="top" title="rasa NLU 0.12.0a2 documentation" href="index.html"/>
         <link rel="next" title="Configuration" href="config.html"/>
         <link rel="prev" title="Installation" href="installation.html"/>
 <link href="_static/css/rasa_theme.css" rel="stylesheet" type="text/css">
@@ -251,7 +251,8 @@ In this tutorial we&#8217;ll build a model which does exactly that.</p>
       <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
       <span class="nt">&quot;end&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
       <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;chinese&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;cuisine&quot;</span>
+      <span class="nt">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;cuisine&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="mf">0.875</span>
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
@@ -315,7 +316,8 @@ When no project is specified, as in this example, a &#8220;default&#8221; one wi
             <span class="nt">&quot;end&quot;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
             <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;mexican&quot;</span><span class="p">,</span>
             <span class="nt">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;cuisine&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;extractor&quot;</span><span class="p">:</span> <span class="s2">&quot;ner_crf&quot;</span>
+            <span class="nt">&quot;extractor&quot;</span><span class="p">:</span> <span class="s2">&quot;ner_crf&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="mf">0.875</span>
         <span class="p">}</span>
     <span class="p">],</span>
     <span class="nt">&quot;intent_ranking&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -363,7 +365,8 @@ and it&#8217;s also helpful for prioritising which intents need more training da
 <span class="go">            &quot;value&quot;: &quot;italian&quot;,</span>
 <span class="go">            &quot;start&quot;: 12,</span>
 <span class="go">            &quot;end&quot;: 19,</span>
-<span class="go">            &quot;extractor&quot;: &quot;ner_crf&quot;</span>
+<span class="go">            &quot;extractor&quot;: &quot;ner_crf&quot;,</span>
+<span class="go">            &quot;confidence&quot;: 0.875</span>
 <span class="go">        }</span>
 <span class="go">    ],</span>
 <span class="go">    &quot;text&quot;: &quot;I want some italian food&quot;</span>
@@ -468,7 +471,7 @@ To build a more robust app you will obviously want to use a lot more training da
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.12.0a1',
+            VERSION:'0.12.0a2',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
