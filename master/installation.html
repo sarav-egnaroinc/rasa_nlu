@@ -100,8 +100,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#setting-up-rasa-nlu">Setting up rasa NLU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#setting-up-a-backend">Setting up a backend</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#best-for-most-spacy-sklearn">Best for most: spaCy + sklearn</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#first-alternative-mitie">First Alternative: MITIE</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#another-alternative-sklearn-mitie">Another Alternative: sklearn + MITIE</a></li>
 </ul>
 </li>
 </ul>
@@ -247,7 +245,7 @@ don&#8217;t mind the additional dependencies lying around, you can use</p>
 <div class="section" id="setting-up-a-backend">
 <h2>Setting up a backend<a class="headerlink" href="#setting-up-a-backend" title="Permalink to this headline">¶</a></h2>
 <p>Most of the processing pipeline you can use with rasa NLU
-either require MITIE, spaCy or sklearn to be installed.</p>
+require spaCy and sklearn to be installed.</p>
 <div class="section" id="best-for-most-spacy-sklearn">
 <h3>Best for most: spaCy + sklearn<a class="headerlink" href="#best-for-most-spacy-sklearn" title="Permalink to this headline">¶</a></h3>
 <p>You can also run using these two in combination.</p>
@@ -258,55 +256,16 @@ python -m spacy download en_core_web_md
 python -m spacy link en_core_web_md en
 </pre></div>
 </div>
-<p>We highly recommend using at least the &#8220;medium&#8221; sized models (<code class="docutils literal"><span class="pre">_md</span></code>)instead of
-the spacy&#8217;s default small <code class="docutils literal"><span class="pre">en_core_web_sm</span></code> model. Small models will
+<p>This will install Rasa NLU as well as spacy and its language model
+for the english language. We highly recommend using at least the
+&#8220;medium&#8221; sized models (<code class="docutils literal"><span class="pre">_md</span></code>) instead of the spacy&#8217;s
+default small <code class="docutils literal"><span class="pre">en_core_web_sm</span></code> model. Small models will
 work as well, the downside is that
 they have worse performance during intent classification.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Using spaCy as the backend for Rasa is the <strong>preferred option</strong>.
-For most domains the performance is better or equally
-good as results achieved with MITIE. Additionally,
-it is easier to setup and faster to train.</p>
+<p class="last">Using spaCy as the backend for Rasa is the <strong>preferred option</strong>.</p>
 </div>
-</div>
-<div class="section" id="first-alternative-mitie">
-<h3>First Alternative: MITIE<a class="headerlink" href="#first-alternative-mitie" title="Permalink to this headline">¶</a></h3>
-<p>The <a class="reference external" href="https://github.com/mit-nlp/MITIE">MITIE</a> backend is all-inclusive,
-in the sense that it provides both the NLP and the ML parts.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install git+https://github.com/mit-nlp/MITIE.git
-pip install rasa_nlu<span class="o">[</span>mitie<span class="o">]</span>
-</pre></div>
-</div>
-<p>and then download the <a class="reference external" href="https://github.com/mit-nlp/MITIE/releases/download/v0.4/MITIE-models-v0.2.tar.bz2">MITIE models</a>.
-The file you need is <code class="docutils literal"><span class="pre">total_word_feature_extractor.dat</span></code>. Save this
-somewhere and in your <code class="docutils literal"><span class="pre">config.json</span></code> add
-<code class="docutils literal"><span class="pre">'mitie_file'</span> <span class="pre">:</span> <span class="pre">'/path/to/total_word_feature_extractor.dat'</span></code>.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p>Training MITIE can be quite slow on datasets
-with more than a few intents. You can try</p>
-<blockquote class="last">
-<div><ul class="simple">
-<li>to use the sklearn + MITIE backend instead
-(which uses sklearn for the training) or</li>
-<li>you can install <a class="reference external" href="https://github.com/tmbo/mitie">our mitie fork</a>
-which should reduce the training time as well.</li>
-</ul>
-</div></blockquote>
-</div>
-</div>
-<div class="section" id="another-alternative-sklearn-mitie">
-<h3>Another Alternative: sklearn + MITIE<a class="headerlink" href="#another-alternative-sklearn-mitie" title="Permalink to this headline">¶</a></h3>
-<p>There is a third backend that combines the advantages of the two previous ones:</p>
-<ol class="arabic simple">
-<li>the fast and good intent classification from sklearn and</li>
-<li>the good entitiy recognition and feature vector creation from MITIE</li>
-</ol>
-<p>Especially, if you have a larger number of intents (more than 10),
-training intent classifiers with MITIE can take very long.</p>
-<p>To use this backend you need to follow the instructions for
-installing both, sklearn and MITIE.</p>
 </div>
 </div>
 </div>

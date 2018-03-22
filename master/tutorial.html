@@ -271,18 +271,9 @@ Luckily, there&#8217;s a <a class="reference external" href="https://github.com/
 <div class="section" id="training-a-new-model-for-your-project">
 <span id="training-your-model"></span><h2>Training a New Model for your Project<a class="headerlink" href="#training-a-new-model-for-your-project" title="Permalink to this headline">¶</a></h2>
 <p>Now we&#8217;re going to create a configuration file. Make sure first that you&#8217;ve set up a backend, see <a class="reference internal" href="installation.html#section-backends"><span class="std std-ref">Installation</span></a> .
-Create a file called <code class="docutils literal"><span class="pre">config_spacy.json</span></code> or <code class="docutils literal"><span class="pre">config_mitie.json</span></code>, depending on the pipeline selected, in your working directory which looks like this</p>
+Create a file called <code class="docutils literal"><span class="pre">config_spacy.json</span></code> in your working directory which looks like this</p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;pipeline&quot;</span><span class="p">:</span> <span class="s2">&quot;spacy_sklearn&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;path&quot;</span> <span class="p">:</span> <span class="s2">&quot;./projects&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;data&quot;</span> <span class="p">:</span> <span class="s2">&quot;./data/examples/rasa/demo-rasa.json&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>or if you&#8217;ve installed the MITIE backend instead:</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;pipeline&quot;</span><span class="p">:</span> <span class="s2">&quot;mitie&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;mitie_file&quot;</span><span class="p">:</span> <span class="s2">&quot;./data/total_word_feature_extractor.dat&quot;</span><span class="p">,</span>
   <span class="nt">&quot;path&quot;</span> <span class="p">:</span> <span class="s2">&quot;./projects&quot;</span><span class="p">,</span>
   <span class="nt">&quot;data&quot;</span> <span class="p">:</span> <span class="s2">&quot;./data/examples/rasa/demo-rasa.json&quot;</span>
 <span class="p">}</span>
@@ -356,14 +347,9 @@ This tutorial is just a toy example, with far too little training data to expect
 <p class="last">Intent classification is independent of entity extraction, e.g. in &#8220;I am looking for Chinese food&#8221; the entities are not extracted, though intent classification is correct.</p>
 </div>
 <p>Rasa NLU will also print a <code class="docutils literal"><span class="pre">confidence</span></code> value for the intent classification. For models using spacy
-intent classification this will be a probability. For MITIE models this is just a score, which <strong>might be
-greater than 1</strong>.</p>
+intent classification this will be a probability.</p>
 <p>You can use this to do some error handling in your chatbot (ex: asking the user again if the confidence is low)
 and it&#8217;s also helpful for prioritising which intents need more training data.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The output may contain other or less attributes, depending on the pipeline you are using. For example, the <code class="docutils literal"><span class="pre">mitie</span></code> pipeline doesn&#8217;t include the <code class="docutils literal"><span class="pre">&quot;intent_ranking&quot;</span></code> (see example below) whereas the <code class="docutils literal"><span class="pre">spacy_sklearn</span></code> pipeline does (see example above).</p>
-</div>
 <p>With very little data, rasa NLU can in certain cases already generalise concepts, for example:</p>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> curl -X POST localhost:5000/parse -d <span class="s1">&#39;{&quot;q&quot;:&quot;I want some italian food&quot;}&#39;</span> <span class="p">|</span> python -m json.tool
 <span class="go">{</span>
@@ -377,7 +363,7 @@ and it&#8217;s also helpful for prioritising which intents need more training da
 <span class="go">            &quot;value&quot;: &quot;italian&quot;,</span>
 <span class="go">            &quot;start&quot;: 12,</span>
 <span class="go">            &quot;end&quot;: 19,</span>
-<span class="go">            &quot;extractor&quot;: &quot;ner_mitie&quot;</span>
+<span class="go">            &quot;extractor&quot;: &quot;ner_crf&quot;</span>
 <span class="go">        }</span>
 <span class="go">    ],</span>
 <span class="go">    &quot;text&quot;: &quot;I want some italian food&quot;</span>

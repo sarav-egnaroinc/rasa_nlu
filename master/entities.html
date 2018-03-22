@@ -225,22 +225,17 @@ Here we&#8217;ll go through a few use cases and make recommendations of what to 
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ner_mitie</span></code></td>
-<td>MITIE</td>
-<td>structured SVM</td>
-<td>good for training custom entities</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ner_crf</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ner_crf</span></code></td>
 <td>crfsuite</td>
 <td>conditional random field</td>
 <td>good for training custom entities</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">ner_spacy</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ner_spacy</span></code></td>
 <td>spaCy</td>
 <td>averaged perceptron</td>
 <td>provides pre-trained entities</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ner_duckling</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ner_duckling</span></code></td>
 <td>duckling</td>
 <td>context-free grammar</td>
 <td>provides pre-trained entities</td>
@@ -270,8 +265,7 @@ You can add multiple ner components to your pipeline; the results from each will
 <div class="section" id="custom-domain-specific-entities">
 <h3>Custom, Domain-specific entities<a class="headerlink" href="#custom-domain-specific-entities" title="Permalink to this headline">¶</a></h3>
 <p>In the introductory tutorial we build a restaurant bot, and create custom entities for location and cuisine.
-The best components for training these domain-specific entity recognisers are the <code class="docutils literal"><span class="pre">ner_mitie</span></code> and <code class="docutils literal"><span class="pre">ner_crf</span></code> components.
-It is recommended that you experiment with both of these to see what works best for your data set.</p>
+The best components for training these domain-specific entity recognisers is the <code class="docutils literal"><span class="pre">ner_crf</span></code> component.</p>
 </div>
 </div>
 <div class="section" id="returned-entities-object">
@@ -287,7 +281,7 @@ It is recommended that you experiment with both of these to see what works best 
       <span class="nt">&quot;end&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
       <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;chinese&quot;</span><span class="p">,</span>
       <span class="nt">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;cuisine&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;extractor&quot;</span><span class="p">:</span> <span class="s2">&quot;ner_mitie&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;extractor&quot;</span><span class="p">:</span> <span class="s2">&quot;ner_crf&quot;</span><span class="p">,</span>
       <span class="nt">&quot;processors&quot;</span><span class="p">:</span> <span class="p">[]</span>
     <span class="p">}</span>
   <span class="p">]</span>

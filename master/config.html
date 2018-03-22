@@ -118,7 +118,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#data">data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cors-origins">cors_origins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#emulate">emulate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mitie-file">mitie_file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spacy-model-name">spacy_model_name</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#token">token</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#max-number-of-ngrams">max_number_of_ngrams</a></li>
@@ -270,7 +269,6 @@ so the option <code class="docutils literal"><span class="pre">pipeline</span></
   <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
   <span class="nt">&quot;emulate&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
   <span class="nt">&quot;log_file&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="nt">&quot;mitie_file&quot;</span><span class="p">:</span> <span class="s2">&quot;data/total_word_feature_extractor.dat&quot;</span><span class="p">,</span>
   <span class="nt">&quot;spacy_model_name&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
   <span class="nt">&quot;token&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
   <span class="nt">&quot;cors_origins&quot;</span><span class="p">:</span> <span class="p">[],</span>
@@ -326,7 +324,7 @@ All projects are stored under the <code class="docutils literal"><span class="pr
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><code class="docutils literal"><span class="pre">str</span></code> or <code class="docutils literal"><span class="pre">[str]</span></code></td>
 </tr>
-<tr class="field-even field"><th class="field-name">Examples:</th><td class="field-body"><code class="docutils literal"><span class="pre">&quot;mitie&quot;</span></code> or
+<tr class="field-even field"><th class="field-name">Examples:</th><td class="field-body"><code class="docutils literal"><span class="pre">&quot;spacy_sklearn&quot;</span></code> or
 <code class="docutils literal"><span class="pre">[&quot;nlp_spacy&quot;,</span> <span class="pre">&quot;ner_spacy&quot;,</span> <span class="pre">&quot;ner_synonyms&quot;]</span></code></td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">The pipeline used for training. Can either be a template (passing a string) or a list of components (array). For all
@@ -520,21 +518,6 @@ The default value is <code class="docutils literal"><span class="pre">[]</span><
 </tr>
 <tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Format to be returned by the http server. If <code class="docutils literal"><span class="pre">null</span></code> (default) the rasa NLU internal format will be used.
 Otherwise, the output will be formatted according to the API specified.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="mitie-file">
-<h3>mitie_file<a class="headerlink" href="#mitie-file" title="Permalink to this headline">¶</a></h3>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body"><code class="docutils literal"><span class="pre">str</span></code></td>
-</tr>
-<tr class="field-even field"><th class="field-name">Examples:</th><td class="field-body"><code class="docutils literal"><span class="pre">&quot;data/total_word_feature_extractor.dat&quot;</span></code></td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">File containing <code class="docutils literal"><span class="pre">total_word_feature_extractor.dat</span></code> (see <a class="reference internal" href="installation.html#section-backends"><span class="std std-ref">Installation</span></a>)</td>
 </tr>
 </tbody>
 </table>
