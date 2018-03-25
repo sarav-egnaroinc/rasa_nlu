@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Training Data Format &mdash; rasa NLU 0.12.0a2 documentation</title>
+  <title>Training and Data Format &mdash; rasa NLU 0.12.0a2 documentation</title>
   
 
   
@@ -103,12 +103,16 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating an existing app</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Training Data Format</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#common-examples">Common Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#entity-synonyms">Entity Synonyms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#regular-expression-features">Regular Expression Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#markdown-format">Markdown Format</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#organization">Organization</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Training and Data Format</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#data-format">Data Format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-examples">Common Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#entity-synonyms">Entity Synonyms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#regular-expression-features">Regular Expression Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#markdown-format">Markdown Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#organization">Organization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#train-a-model">Train a Model</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="http.html">Using rasa NLU as a HTTP server</a></li>
@@ -176,7 +180,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Training Data Format</li>
+      <li>Training and Data Format</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -204,9 +208,13 @@
 
 
     <p class="scv-banner scv-sphinx_rtd_theme"><a href="../0.11.4/dataformat.html"><b>Warning:</b> This document is for the development version of rasa NLU. The latest version is 0.11.4.</a></p>
-<div class="section" id="training-data-format">
-<span id="section-dataformat"></span><h1>Training Data Format<a class="headerlink" href="#training-data-format" title="Permalink to this headline">¶</a></h1>
-<p>The training data for rasa NLU is structured into different parts, <code class="docutils literal"><span class="pre">common_examples</span></code>, <code class="docutils literal"><span class="pre">entity_synonyms</span></code> and <code class="docutils literal"><span class="pre">regex_features</span></code>. The most important one is <code class="docutils literal"><span class="pre">common_examples</span></code>.</p>
+<div class="section" id="training-and-data-format">
+<span id="section-dataformat"></span><h1>Training and Data Format<a class="headerlink" href="#training-and-data-format" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="data-format">
+<h2>Data Format<a class="headerlink" href="#data-format" title="Permalink to this headline">¶</a></h2>
+<p>The training data for rasa NLU is structured into different parts,
+<code class="docutils literal"><span class="pre">common_examples</span></code>, <code class="docutils literal"><span class="pre">entity_synonyms</span></code> and <code class="docutils literal"><span class="pre">regex_features</span></code>.
+The most important one is <code class="docutils literal"><span class="pre">common_examples</span></code>.</p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;rasa_nlu_data&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;common_examples&quot;</span><span class="p">:</span> <span class="p">[],</span>
@@ -221,7 +229,7 @@ examples in the <code class="docutils literal"><span class="pre">common_examples
 Regex features are a tool to help the classifier detect entities or intents and improve the performance.</p>
 <p>You can use <a class="reference external" href="https://rodrigopivi.github.io/Chatito/">Chatito</a> , a tool for generating training datasets in rasa&#8217;s format using a simple DSL or <a class="reference external" href="https://yuukanoo.github.io/tracy">Tracy</a>, a simple GUI to create training datasets for rasa.</p>
 <div class="section" id="common-examples">
-<h2>Common Examples<a class="headerlink" href="#common-examples" title="Permalink to this headline">¶</a></h2>
+<h3>Common Examples<a class="headerlink" href="#common-examples" title="Permalink to this headline">¶</a></h3>
 <p>Common examples have three components: <code class="docutils literal"><span class="pre">text</span></code>, <code class="docutils literal"><span class="pre">intent</span></code>, and <code class="docutils literal"><span class="pre">entities</span></code>. The first two are strings while the last one is an array.</p>
 <blockquote>
 <div><ul class="simple">
@@ -251,7 +259,7 @@ That way you can map synonyms, or misspellings, to the same <code class="docutil
 </div>
 </div>
 <div class="section" id="entity-synonyms">
-<h2>Entity Synonyms<a class="headerlink" href="#entity-synonyms" title="Permalink to this headline">¶</a></h2>
+<h3>Entity Synonyms<a class="headerlink" href="#entity-synonyms" title="Permalink to this headline">¶</a></h3>
 <p>If you define entities as having the same value they will be treated as synonyms. Here is an example of that:</p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
   <span class="p">{</span>
@@ -307,7 +315,7 @@ component (see <a class="reference internal" href="pipeline.html#section-pipelin
 </div>
 </div>
 <div class="section" id="regular-expression-features">
-<h2>Regular Expression Features<a class="headerlink" href="#regular-expression-features" title="Permalink to this headline">¶</a></h2>
+<h3>Regular Expression Features<a class="headerlink" href="#regular-expression-features" title="Permalink to this headline">¶</a></h3>
 <p>Regular expressions can be used to support the intent classification and entity extraction. E.g. if your entity
 has a certain structure as in a zipcode, you can use a regular expression to ease detection of that entity. For
 the zipcode example it might look like this:</p>
@@ -343,7 +351,7 @@ training data!</p>
 </div>
 </div>
 <div class="section" id="markdown-format">
-<h2>Markdown Format<a class="headerlink" href="#markdown-format" title="Permalink to this headline">¶</a></h2>
+<h3>Markdown Format<a class="headerlink" href="#markdown-format" title="Permalink to this headline">¶</a></h3>
 <p>Alternatively training data can be used in the following markdown format. Examples are listed using the unordered
 list syntax, e.g. minus <code class="docutils literal"><span class="pre">-</span></code>, asterisk <code class="docutils literal"><span class="pre">*</span></code>, or plus <code class="docutils literal"><span class="pre">+</span></code>:</p>
 <div class="highlight-markdown"><div class="highlight"><pre><span></span>## intent:check_balance
@@ -365,7 +373,7 @@ list syntax, e.g. minus <code class="docutils literal"><span class="pre">-</span
 </div>
 </div>
 <div class="section" id="organization">
-<h2>Organization<a class="headerlink" href="#organization" title="Permalink to this headline">¶</a></h2>
+<h3>Organization<a class="headerlink" href="#organization" title="Permalink to this headline">¶</a></h3>
 <p>The training data can either be stored in a single file or split into multiple files.
 For larger training examples, splitting the training data into multiple files, e.g. one per intent, increases maintainability.</p>
 <p>Storing files with different file formats, i.e. mixing markdown and JSON, is currently not supported.</p>
@@ -374,6 +382,23 @@ For larger training examples, splitting the training data into multiple files, e
 <p class="last">Splitting the training data into multiple files currently only works for markdown and JSON data.
 For other file formats you have to use the single-file approach.</p>
 </div>
+</div>
+</div>
+<div class="section" id="train-a-model">
+<h2>Train a Model<a class="headerlink" href="#train-a-model" title="Permalink to this headline">¶</a></h2>
+<p>There is a helper script that allows you to train a model.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python -m rasa_nlu.train
+</pre></div>
+</div>
+<p>Here is a quick overview over the parameters you can pass to that script:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>/home/travis/virtualenv/python2.7.14/bin/python: No module named rasa_nlu
+</pre></div>
+</div>
+<p>The other ways to train a model are</p>
+<ul class="simple">
+<li>training it using your own python code</li>
+<li>training it using the HTTP api (<span class="xref std std-ref">http</span>)</li>
+</ul>
 </div>
 </div>
 

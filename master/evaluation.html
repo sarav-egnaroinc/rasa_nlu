@@ -103,7 +103,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating an existing app</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataformat.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataformat.html">Training and Data Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="http.html">Using rasa NLU as a HTTP server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python.html">Using rasa NLU from python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">Entity Extraction</a></li>
@@ -117,6 +117,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#entity-scoring">Entity Scoring</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluation-parameters">Evaluation Parameters</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
@@ -207,17 +208,31 @@
 <div class="section" id="evaluation">
 <span id="section-evaluation"></span><h1>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h1>
 <p>The evaluation script <cite>evaluate.py</cite> allows you to test your models performance for intent classification and entity recognition. You invoke this script supplying test data, model, and config file arguments:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>python -m rasa_nlu.evaluate -d data/my_test.json -m models/my_model -c my_nlu_config.json
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python -m rasa_nlu.evaluate <span class="se">\</span>
+    --data data/examples/rasa/demo-rasa.json <span class="se">\</span>
+    --model projects/default/model_20180323-145833
 </pre></div>
 </div>
-<p>If you would like to evaluate your pipeline using crossvalidation, you can run the evaluation script with the mode crossvalidation flag. This gives you an estimate of how accurately a predictive model will perform in practice. Note that you cannot specify a model in this mode, as a new model will be trained on part of the data for every crossvalidation loop. An example invocation of your script would be:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>python -m rasa_nlu.evaluate -d data/examples/rasa/demo-rasa.json -c sample_configs/config_spacy.json --mode crossvalidation
+<p>Where <strong>model</strong> specifies the model to evaluate on the test data specified
+wioth <strong>data</strong>.</p>
+<p>If you would like to evaluate your pipeline using
+<em>cross-validation</em>, you can run the evaluation script with the mode
+crossvalidation flag. This gives you an estimate of how accurately a
+predictive model will perform in practice. Note that you cannot specify
+a model in this mode, as a new model will be trained on part of the data
+for every crossvalidation loop. An example invocation of your script would be:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>python -m rasa_nlu.evaluate <span class="se">\</span>
+    --data data/examples/rasa/demo-rasa.json <span class="se">\</span>
+    --config sample_configs/config_spacy.yml <span class="se">\</span>
+    --mode crossvalidation
 </pre></div>
 </div>
 <div class="section" id="intent-classification">
 <h2>Intent Classification<a class="headerlink" href="#intent-classification" title="Permalink to this headline">¶</a></h2>
-<p>The evaluation script will log precision, recall, and f1 measure for each intent and once summarized for all.
-Furthermore, it creates a confusion matrix for you to see which intents are mistaken for which others.</p>
+<p>The evaluation script will log precision, recall, and f1 measure for
+each intent and once summarized for all.
+Furthermore, it creates a confusion matrix for you to see which
+intents are mistaken for which others.</p>
 </div>
 <div class="section" id="entity-extraction">
 <h2>Entity Extraction<a class="headerlink" href="#entity-extraction" title="Permalink to this headline">¶</a></h2>
@@ -281,6 +296,17 @@ BILOU-based one.</p>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="section" id="evaluation-parameters">
+<h2>Evaluation Parameters<a class="headerlink" href="#evaluation-parameters" title="Permalink to this headline">¶</a></h2>
+<p>There are a number of parameters you can pass to the evaluation script</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python -m rasa_nlu.evaluate --help
+</pre></div>
+</div>
+<p>Here is a quick overview:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>/home/travis/virtualenv/python2.7.14/bin/python: No module named rasa_nlu
+</pre></div>
 </div>
 </div>
 </div>

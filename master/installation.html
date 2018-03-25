@@ -97,8 +97,7 @@
               <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#setting-up-rasa-nlu">Setting up rasa NLU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#setting-up-a-backend">Setting up a backend</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-rasa-nlu">Setting up rasa NLU</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#best-for-most-spacy-sklearn">Best for most: spaCy + sklearn</a></li>
 </ul>
 </li>
@@ -110,7 +109,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating an existing app</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataformat.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataformat.html">Training and Data Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="http.html">Using rasa NLU as a HTTP server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python.html">Using rasa NLU from python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">Entity Extraction</a></li>
@@ -222,34 +221,30 @@ pip install -r requirements.txt
 pip install -e .
 </pre></div>
 </div>
-<p>rasa NLU allows you to use components to process your messages.
+<p>Rasa NLU allows you to use components to process your messages.
 E.g. there is a component for intent classification and
 there are several different components for entity recognition.
 The different components have their own requirements. To get
 you started quickly, this installation guide only installs
 the basic requirements, you may need to install other
 dependencies if you want to use certain components. When running
-rasa NLU it will check if all needed dependencies are
-installed and tell you which are missing, if any.</p>
+Rasa NLU it will check if all required dependencies are
+installed and tell you if any are missing.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>If you want to make sure you got all the dependencies
-installed any component might ever need, and you
+<p>If you want to make sure you have the dependencies
+installed for any component you might ever need, and you
 don&#8217;t mind the additional dependencies lying around, you can use</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>pip install -r alt_requirements/requirements_full.txt
 </pre></div>
 </div>
-<p class="last">instead of <code class="docutils literal"><span class="pre">requirements.txt</span></code> to install all requirements.</p>
+<p class="last">to install everything.</p>
 </div>
-</div>
-<div class="section" id="setting-up-a-backend">
-<h2>Setting up a backend<a class="headerlink" href="#setting-up-a-backend" title="Permalink to this headline">¶</a></h2>
-<p>Most of the processing pipeline you can use with rasa NLU
-require spaCy and sklearn to be installed.</p>
 <div class="section" id="best-for-most-spacy-sklearn">
 <h3>Best for most: spaCy + sklearn<a class="headerlink" href="#best-for-most-spacy-sklearn" title="Permalink to this headline">¶</a></h3>
-<p>You can also run using these two in combination.</p>
-<p>installing spacy just requires (for more information
+<p>Rasa NLU can run with a choice of backends, but for most users
+a combination of spaCy and scikit-learn is the best option.</p>
+<p>Installing spacy just requires (for more information
 visit the <a class="reference external" href="https://spacy.io/docs/usage/">spacy docu</a>):</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>pip install rasa_nlu<span class="o">[</span>spacy<span class="o">]</span>
 python -m spacy download en_core_web_md
@@ -257,14 +252,15 @@ python -m spacy link en_core_web_md en
 </pre></div>
 </div>
 <p>This will install Rasa NLU as well as spacy and its language model
-for the english language. We highly recommend using at least the
+for the english language. We recommend using at least the
 &#8220;medium&#8221; sized models (<code class="docutils literal"><span class="pre">_md</span></code>) instead of the spacy&#8217;s
-default small <code class="docutils literal"><span class="pre">en_core_web_sm</span></code> model. Small models will
-work as well, the downside is that
-they have worse performance during intent classification.</p>
+default small <code class="docutils literal"><span class="pre">en_core_web_sm</span></code> model. Small models require less
+memory to run, but will somewhat reduce intent classification performance.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Using spaCy as the backend for Rasa is the <strong>preferred option</strong>.</p>
+<p class="last">Using spaCy as the backend for Rasa NLU is the <strong>preferred option</strong>.
+In older versions of Rasa NLU, MITIE was another supported backend.
+MITIE support has been deprecated as of version 0.12.</p>
 </div>
 </div>
 </div>

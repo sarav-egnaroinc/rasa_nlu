@@ -38,7 +38,7 @@
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="rasa NLU 0.12.0a2 documentation" href="index.html"/>
-        <link rel="next" title="Training Data Format" href="dataformat.html"/>
+        <link rel="next" title="Training and Data Format" href="dataformat.html"/>
         <link rel="prev" title="Configuration" href="config.html"/>
 <link href="_static/css/rasa_theme.css" rel="stylesheet" type="text/css">
 
@@ -112,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#emulation">Emulation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="dataformat.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataformat.html">Training and Data Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="http.html">Using rasa NLU as a HTTP server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python.html">Using rasa NLU from python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">Entity Extraction</a></li>
@@ -237,7 +237,8 @@ and pass that path to the trainer.</p>
 </div>
 <div class="section" id="emulation">
 <h2>Emulation<a class="headerlink" href="#emulation" title="Permalink to this headline">¶</a></h2>
-<p>To make Rasa NLU easy to try out with existing projects, the server can <cite>emulate</cite> wit, LUIS, or Dialogflow.
+<p>To make Rasa NLU easy to try out with existing projects,
+the server can <cite>emulate</cite> wit, LUIS, or Dialogflow.
 In native mode, a request / response looks like this :</p>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> curl -XPOST localhost:5000/parse -d <span class="s1">&#39;{&quot;q&quot;:&quot;I am looking for Chinese food&quot;}&#39;</span> <span class="p">|</span> python -mjson.tool
 <span class="go">{</span>
@@ -255,7 +256,8 @@ In native mode, a request / response looks like this :</p>
 <span class="go">}</span>
 </pre></div>
 </div>
-<p>if we run in <code class="docutils literal"><span class="pre">wit</span></code> mode (e.g. <code class="docutils literal"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">rasa_nlu.server</span> <span class="pre">-e</span> <span class="pre">wit</span></code>)</p>
+<p>if we run in <code class="docutils literal"><span class="pre">wit</span></code> mode
+(e.g. <code class="docutils literal"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">rasa_nlu.server</span> <span class="pre">--emulate</span> <span class="pre">wit</span> <span class="pre">--path</span> <span class="pre">projects</span></code>).</p>
 <p>then instead have to make a GET request</p>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> curl <span class="s1">&#39;localhost:5000/parse?q=hello&#39;</span> <span class="p">|</span> python -mjson.tool
 <span class="go">[</span>
@@ -321,7 +323,7 @@ In native mode, a request / response looks like this :</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dataformat.html" class="btn btn-neutral float-right" title="Training Data Format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dataformat.html" class="btn btn-neutral float-right" title="Training and Data Format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="config.html" class="btn btn-neutral" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

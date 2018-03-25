@@ -109,7 +109,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating an existing app</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dataformat.html">Training Data Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataformat.html">Training and Data Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="http.html">Using rasa NLU as a HTTP server</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python.html">Using rasa NLU from python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">Entity Extraction</a></li>
@@ -207,11 +207,14 @@
 <span id="tutorial"></span><span id="section-tutorial"></span><h1>Tutorial: A simple restaurant search bot<a class="headerlink" href="#tutorial-a-simple-restaurant-search-bot" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">See <a class="reference internal" href="migrating.html#section-migration"><span class="std std-ref">Migrating an existing app</span></a> for how to clone your existing wit/LUIS/Dialogflow app.</p>
+<p class="last">See <a class="reference internal" href="migrating.html#section-migration"><span class="std std-ref">Migrating an existing app</span></a> for how to clone your
+existing wit/LUIS/Dialogflow app.</p>
 </div>
-<p>As an example we&#8217;ll start a new project covering the domain of searching for restaurants.
-We&#8217;ll start with an extremely simple model of those conversations. You can build up from there.</p>
-<p>Let&#8217;s assume that <cite>anything</cite> our bot&#8217;s users say can be categorized into one of the following <strong>intents</strong>:</p>
+<p>As an example we&#8217;ll start a new project covering the domain
+of searching for restaurants. We&#8217;ll start with an extremely simple
+model of those conversations. You can build up from there.</p>
+<p>Let&#8217;s assume that <cite>anything</cite> our bot&#8217;s users say can be
+categorized into one of the following <strong>intents</strong>:</p>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">greet</span></code></li>
 <li><code class="docutils literal"><span class="pre">restaurant_search</span></code></li>
@@ -229,13 +232,24 @@ We&#8217;ll start with an extremely simple model of those conversations. You can
 <li><cite>I&#8217;m in the North of town and I want chinese food</cite></li>
 <li><cite>I&#8217;m hungry</cite></li>
 </ul>
-<p>The first job of rasa NLU is to assign any given sentence to one of the <strong>intent</strong> categories: <code class="docutils literal"><span class="pre">greet</span></code>, <code class="docutils literal"><span class="pre">restaurant_search</span></code>, or <code class="docutils literal"><span class="pre">thankyou</span></code>.</p>
-<p>The second job is to label words like &#8220;Mexican&#8221; and &#8220;center&#8221; as <code class="docutils literal"><span class="pre">cuisine</span></code> and <code class="docutils literal"><span class="pre">location</span></code> <strong>entities</strong>, respectively.
+<p>The first job of rasa NLU is to assign any given sentence to one of
+the <strong>intent</strong> categories: <code class="docutils literal"><span class="pre">greet</span></code>, <code class="docutils literal"><span class="pre">restaurant_search</span></code>, or <code class="docutils literal"><span class="pre">thankyou</span></code>.</p>
+<p>The second job is to label words like &#8220;Mexican&#8221; and &#8220;center&#8221; as
+<code class="docutils literal"><span class="pre">cuisine</span></code> and <code class="docutils literal"><span class="pre">location</span></code> <strong>entities</strong>, respectively.
 In this tutorial we&#8217;ll build a model which does exactly that.</p>
 <div class="section" id="preparing-the-training-data">
 <h2>Preparing the Training Data<a class="headerlink" href="#preparing-the-training-data" title="Permalink to this headline">¶</a></h2>
-<p>The training data is essential to develop chatbots. It should include texts to be interpreted and the structured data (intent/entities) we expect chatbots to convert the texts into. The best way to get training texts is from <em>real users</em>, and the best way to get the structured data is to <a class="reference external" href="https://medium.com/rasa-blog/put-on-your-robot-costume-and-be-the-minimum-viable-bot-yourself-3e48a5a59308">pretend to be the bot yourself</a>. But to help get you started, we have some <a class="reference external" href="https://github.com/RasaHQ/rasa_nlu/blob/master/data/examples/rasa/demo-rasa.json">data saved</a>.</p>
-<p>Download the file (json format) and open it, and you&#8217;ll see a list of training examples, each composed of <code class="docutils literal"><span class="pre">&quot;text&quot;</span></code>, <code class="docutils literal"><span class="pre">&quot;intent&quot;</span></code> and <code class="docutils literal"><span class="pre">&quot;entities&quot;</span></code>, as shown below. In your working directory, create a <code class="docutils literal"><span class="pre">data</span></code> folder, and copy this <code class="docutils literal"><span class="pre">demo-rasa.json</span></code> file there.</p>
+<p>The training data is essential to develop chatbots. It should include
+texts to be interpreted and the structured data (intent/entities) we expect
+chatbots to convert the texts into. The best way to get training texts is
+from <em>real users</em>, and the best way to get the structured data is to
+<a class="reference external" href="https://medium.com/rasa-blog/put-on-your-robot-costume-and-be-the-minimum-viable-bot-yourself-3e48a5a59308">pretend to be the bot yourself</a>.
+But to help get you started, we have some
+<a class="reference external" href="https://github.com/RasaHQ/rasa_nlu/blob/master/data/examples/rasa/demo-rasa.json">data saved</a>.</p>
+<p>Download the file (json format) and open it, and you&#8217;ll see a list of
+training examples, each composed of <code class="docutils literal"><span class="pre">&quot;text&quot;</span></code>, <code class="docutils literal"><span class="pre">&quot;intent&quot;</span></code> and
+<code class="docutils literal"><span class="pre">&quot;entities&quot;</span></code>, as shown below. In your working directory, create a
+<code class="docutils literal"><span class="pre">data</span></code> folder, and copy this <code class="docutils literal"><span class="pre">demo-rasa.json</span></code> file there.</p>
 <div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;hey&quot;</span><span class="p">,</span>
   <span class="nt">&quot;intent&quot;</span><span class="p">:</span> <span class="s2">&quot;greet&quot;</span><span class="p">,</span>
@@ -258,48 +272,69 @@ In this tutorial we&#8217;ll build a model which does exactly that.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Hopefully the format is intuitive if you&#8217;ve read this far into the tutorial, for details see <a class="reference internal" href="dataformat.html#section-dataformat"><span class="std std-ref">Training Data Format</span></a>. Otherwise, the next section &#8216;visualizing the training data&#8217; can help you better read, verify and/or modify the training data.</p>
+<p>Hopefully the format is intuitive if you&#8217;ve read this far into the
+tutorial, for details see <a class="reference internal" href="dataformat.html#section-dataformat"><span class="std std-ref">Training and Data Format</span></a>. Otherwise,
+the next section &#8216;visualizing the training data&#8217; can help you
+better read, verify and/or modify the training data.</p>
 </div>
 <div class="section" id="visualizing-the-training-data">
 <span id="id1"></span><h2>Visualizing the Training Data<a class="headerlink" href="#visualizing-the-training-data" title="Permalink to this headline">¶</a></h2>
-<p>It&#8217;s always a good idea to <cite>look</cite> at your data before, during, and after training a model.
-Luckily, there&#8217;s a <a class="reference external" href="https://github.com/RasaHQ/rasa-nlu-trainer">great tool</a> for creating training data in rasa&#8217;s format.
-- created by <a class="reference external" href="https://github.com/azazdeaz">&#64;azazdeaz</a> - and it&#8217;s also extremely helpful for inspecting and modifying existing data.</p>
+<p>It&#8217;s always a good idea to <cite>look</cite> at your data before, during,
+and after training a model. Luckily, there&#8217;s a
+<a class="reference external" href="https://github.com/RasaHQ/rasa-nlu-trainer">great tool</a>
+for creating training data in rasa&#8217;s format.
+- created by <a class="reference external" href="https://github.com/azazdeaz">&#64;azazdeaz</a> -
+and it&#8217;s also extremely helpful for inspecting and modifying existing data.</p>
 <p>For the demo data the output should look like this:</p>
 <img alt="_images/rasa_nlu_intent_gui.png" src="_images/rasa_nlu_intent_gui.png" />
-<p>It is <strong>strongly</strong> recommended that you view your training data in the GUI before training.</p>
+<p>It is <strong>strongly</strong> recommended that you view your training
+data in the GUI before training.</p>
 </div>
 <div class="section" id="training-a-new-model-for-your-project">
 <span id="training-your-model"></span><h2>Training a New Model for your Project<a class="headerlink" href="#training-a-new-model-for-your-project" title="Permalink to this headline">¶</a></h2>
-<p>Now we&#8217;re going to create a configuration file. Make sure first that you&#8217;ve set up a backend, see <a class="reference internal" href="installation.html#section-backends"><span class="std std-ref">Installation</span></a> .
-Create a file called <code class="docutils literal"><span class="pre">config_spacy.json</span></code> in your working directory which looks like this</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;pipeline&quot;</span><span class="p">:</span> <span class="s2">&quot;spacy_sklearn&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;path&quot;</span> <span class="p">:</span> <span class="s2">&quot;./projects&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;data&quot;</span> <span class="p">:</span> <span class="s2">&quot;./data/examples/rasa/demo-rasa.json&quot;</span>
-<span class="p">}</span>
+<p>Now we&#8217;re going to create a configuration file. Make sure first that
+you&#8217;ve set up a backend, see <a class="reference internal" href="installation.html#section-backends"><span class="std std-ref">Installation</span></a>. Create a file
+called <code class="docutils literal"><span class="pre">config_spacy.yml</span></code> in your working directory which looks like this</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">language</span><span class="p p-Indicator">:</span> <span class="s">&quot;en&quot;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">pipeline</span><span class="p p-Indicator">:</span> <span class="s">&quot;spacy_sklearn&quot;</span>
 </pre></div>
 </div>
 <p>Now we can train a spacy model by running:</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> python -m rasa_nlu.train -c sample_configs/config_spacy.json
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> python -m rasa_nlu.train <span class="se">\</span>
+    --config sample_configs/config_spacy.yml <span class="se">\</span>
+    --data data/examples/rasa/demo-rasa.json <span class="se">\</span>
+    --path projects
 </pre></div>
 </div>
-<p>If you want to know more about the parameters, there is an overview of the <a class="reference internal" href="config.html#section-configuration"><span class="std std-ref">Configuration</span></a>. After a few minutes,
-rasa NLU will finish training, and you&#8217;ll see a new folder named as
-<code class="docutils literal"><span class="pre">projects/default/model_YYYYMMDD-HHMMSS</span></code> with the timestamp when training finished.</p>
+<p>What do these parameters mean?</p>
+<ul class="simple">
+<li><strong>config</strong>: configuration of the machine learning model</li>
+<li><strong>data</strong>: file / folder that contains the training data</li>
+<li><strong>path</strong>: output path where the model is persisted to</li>
+</ul>
+<p>If you want to know more about the parameters, there is an overview of the
+<a class="reference internal" href="config.html#section-configuration"><span class="std std-ref">Configuration</span></a>. After a few minutes, rasa NLU will finish
+training, and you&#8217;ll see a new folder named as
+<code class="docutils literal"><span class="pre">projects/default/model_YYYYMMDD-HHMMSS</span></code> with the timestamp
+when training finished.</p>
 </div>
 <div class="section" id="using-your-model">
 <span id="tutorial-using-your-model"></span><h2>Using Your Model<a class="headerlink" href="#using-your-model" title="Permalink to this headline">¶</a></h2>
-<p>By default, the server will look for all projects folders under the <code class="docutils literal"><span class="pre">path</span></code> directory specified in the configuration.
-When no project is specified, as in this example, a &#8220;default&#8221; one will be used, itself using the latest trained model.</p>
-<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> python -m rasa_nlu.server -c sample_configs/config_spacy.json
+<p>By default, the server will look for all projects folders under the <code class="docutils literal"><span class="pre">path</span></code>
+directory specified. When no project is specified, as in this example,
+a &#8220;default&#8221; one will be used, itself using the latest trained model.</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> python -m rasa_nlu.server --path projects
 </pre></div>
 </div>
 <p>More information about starting the server can be found in <a class="reference internal" href="http.html#section-http"><span class="std std-ref">Using rasa NLU as a HTTP server</span></a>.</p>
-<p>You can then test your new model by sending a request. Open a new tab/window on your terminal and run</p>
+<p>You can then test your new model by sending a request. Open a new window
+on your terminal and run</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last"><strong>For windows users</strong> the windows command line interface doesn&#8217;t like single quotes. Use doublequotes and escape where necessary. <code class="docutils literal"><span class="pre">curl</span> <span class="pre">-X</span> <span class="pre">POST</span> <span class="pre">&quot;localhost:5000/parse&quot;</span> <span class="pre">-d</span> <span class="pre">&quot;{/&quot;q/&quot;:/&quot;I</span> <span class="pre">am</span> <span class="pre">looking</span> <span class="pre">for</span> <span class="pre">Mexican</span> <span class="pre">food/&quot;}&quot;</span> <span class="pre">|</span> <span class="pre">python</span> <span class="pre">-m</span> <span class="pre">json.tool</span></code></p>
+<p class="last"><strong>For windows users</strong> the windows command line interface doesn&#8217;t
+like single quotes. Use doublequotes and escape where necessary.
+<code class="docutils literal"><span class="pre">curl</span> <span class="pre">-X</span> <span class="pre">POST</span> <span class="pre">&quot;localhost:5000/parse&quot;</span> <span class="pre">-d</span> <span class="pre">&quot;{/&quot;q/&quot;:/&quot;I</span> <span class="pre">am</span> <span class="pre">looking</span> <span class="pre">for</span> <span class="pre">Mexican</span> <span class="pre">food/&quot;}&quot;</span> <span class="pre">|</span> <span class="pre">python</span> <span class="pre">-m</span> <span class="pre">json.tool</span></code></p>
 </div>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> curl -X POST localhost:5000/parse -d <span class="s1">&#39;{&quot;q&quot;:&quot;I am looking for Mexican food&quot;}&#39;</span> <span class="p">|</span> python -m json.tool
 </pre></div>
@@ -342,17 +377,23 @@ When no project is specified, as in this example, a &#8220;default&#8221; one wi
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>If you are using the <code class="docutils literal"><span class="pre">spacy_sklearn</span></code> backend and the entities aren&#8217;t found, don&#8217;t panic!
-This tutorial is just a toy example, with far too little training data to expect good performance.</p>
+<p>If you are using the <code class="docutils literal"><span class="pre">spacy_sklearn</span></code> backend and the entities aren&#8217;t
+found, don&#8217;t panic! This tutorial is just a toy example, with far too
+little training data to expect good performance.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Intent classification is independent of entity extraction, e.g. in &#8220;I am looking for Chinese food&#8221; the entities are not extracted, though intent classification is correct.</p>
+<p class="last">Intent classification is independent of entity extraction, e.g.
+in &#8220;I am looking for Chinese food&#8221; the entities are not extracted,
+though intent classification is correct.</p>
 </div>
-<p>Rasa NLU will also print a <code class="docutils literal"><span class="pre">confidence</span></code> value for the intent classification. For models using spacy
+<p>Rasa NLU will also print a <code class="docutils literal"><span class="pre">confidence</span></code> value for the intent
+classification. For models using spacy
 intent classification this will be a probability.</p>
-<p>You can use this to do some error handling in your chatbot (ex: asking the user again if the confidence is low)
-and it&#8217;s also helpful for prioritising which intents need more training data.</p>
-<p>With very little data, rasa NLU can in certain cases already generalise concepts, for example:</p>
+<p>You can use this to do some error handling in your chatbot (ex:
+asking the user again if the confidence is low) and it&#8217;s also
+helpful for prioritising which intents need more training data.</p>
+<p>With very little data, rasa NLU can in certain cases
+already generalise concepts, for example:</p>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> curl -X POST localhost:5000/parse -d <span class="s1">&#39;{&quot;q&quot;:&quot;I want some italian food&quot;}&#39;</span> <span class="p">|</span> python -m json.tool
 <span class="go">{</span>
 <span class="go">    &quot;intent&quot;: {</span>
@@ -373,8 +414,9 @@ and it&#8217;s also helpful for prioritising which intents need more training da
 <span class="go">}</span>
 </pre></div>
 </div>
-<p>even though there&#8217;s nothing quite like this sentence in the examples used to train the model.
-To build a more robust app you will obviously want to use a lot more training data, so go and collect it!</p>
+<p>even though there&#8217;s nothing quite like this sentence in
+the examples used to train the model. To build a more robust app
+you will obviously want to use a lot more training data, so go and collect it!</p>
 <div class="rating-container">
     <div class="rating-text">
       <p> How was the tutorial? Click to Vote </p>
