@@ -353,6 +353,10 @@ This project adheres to <a class="reference external" href="http://semver.org/">
 <li>server evaluation endpoint at <code class="docutils literal"><span class="pre">POST</span> <span class="pre">/evaluate</span></code></li>
 <li>CRF entity recognizer now returns a confidence score when extracting entities</li>
 <li>server endpoint at <code class="docutils literal"><span class="pre">DELETE</span> <span class="pre">/models</span></code> to unload models from server memory</li>
+<li>added count vector featurizer to create bag of words representation</li>
+<li>added embedding intent classifier implemented in tensorflow</li>
+<li>added tensorflow requirements</li>
+<li>added basic tests for count vector featurizer</li>
 </ul>
 </div>
 <div class="section" id="changed">
@@ -370,6 +374,10 @@ of <code class="docutils literal"><span class="pre">&quot;None&quot;</span></cod
 <code class="docutils literal"><span class="pre">&quot;extractor&quot;:</span> <span class="pre">&quot;ner_crf&quot;</span></code> or no extractor at all</li>
 <li>Ignore hidden files when listing projects or models</li>
 <li>Docker Images now run on python 3.6 for better non-latin character set support</li>
+<li>updated requirements_full.txt to include tensorflow requirements</li>
+<li>updated documentation, added info about tensorflow_embedding pipeline</li>
+<li>updated registry, added tensorflow_embedding pipeline</li>
+<li>changed key name for a file in ngram featurizer</li>
 </ul>
 </div>
 <div class="section" id="removed">
