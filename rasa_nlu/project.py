@@ -200,7 +200,7 @@ class Project(object):
     def _list_loaded_models(self):
         models = []
         for model, interpreter in self._models.items():
-            if interpreter is not None:
+            if model != FALLBACK_MODEL_NAME and interpreter is not None:
                 models.append(model)
         return models
 
