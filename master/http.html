@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Using rasa NLU as a HTTP server &mdash; rasa NLU 0.12.0a2 documentation</title>
+  <title>Using Rasa NLU as a HTTP server &mdash; Rasa NLU 0.12.0a2 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="rasa NLU 0.12.0a2 documentation" href="index.html"/>
-        <link rel="next" title="Using rasa NLU from python" href="python.html"/>
+    <link rel="top" title="Rasa NLU 0.12.0a2 documentation" href="index.html"/>
+        <link rel="next" title="Using Rasa NLU from python" href="python.html"/>
         <link rel="prev" title="Training and Data Format" href="dataformat.html"/>
 <link href="_static/css/rasa_theme.css" rel="stylesheet" type="text/css">
 
@@ -60,7 +60,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> rasa NLU
+            <a href="index.html" class="icon icon-home"> Rasa NLU
           
 
           
@@ -104,7 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating an existing app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataformat.html">Training and Data Format</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Using rasa NLU as a HTTP server</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using Rasa NLU as a HTTP server</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#running-the-server">Running the server</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#emulation">Emulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#endpoints">Endpoints</a><ul>
@@ -122,13 +122,14 @@
 <li class="toctree-l2"><a class="reference internal" href="#server-parameters">Server Parameters</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="python.html">Using rasa NLU from python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Using Rasa NLU from python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">Entity Extraction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="closeloop.html">Improving your models from feedback</a></li>
 <li class="toctree-l1"><a class="reference internal" href="persist.html">Model Persistence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="languages.html">Language Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pipeline.html">Processing Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="context.html">Context-aware Dialogue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrations.html">Migration Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
@@ -156,7 +157,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">rasa NLU</a>
+          <a href="index.html">Rasa NLU</a>
         
       </nav>
 
@@ -186,7 +187,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Using rasa NLU as a HTTP server</li>
+      <li>Using Rasa NLU as a HTTP server</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -213,15 +214,15 @@
 
 
 
-    <p class="scv-banner scv-sphinx_rtd_theme"><a href="../0.11.4/http.html"><b>Warning:</b> This document is for the development version of rasa NLU. The latest version is 0.11.4.</a></p>
+    <p class="scv-banner scv-sphinx_rtd_theme"><a href="../0.11.4/http.html"><b>Warning:</b> This document is for the development version of Rasa NLU. The latest version is 0.11.4.</a></p>
 <div class="section" id="using-rasa-nlu-as-a-http-server">
-<span id="section-http"></span><h1>Using rasa NLU as a HTTP server<a class="headerlink" href="#using-rasa-nlu-as-a-http-server" title="Permalink to this headline">¶</a></h1>
+<span id="section-http"></span><h1>Using Rasa NLU as a HTTP server<a class="headerlink" href="#using-rasa-nlu-as-a-http-server" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Before you can use the server, you should train a model!
 See <a class="reference internal" href="tutorial.html#training-your-model"><span class="std std-ref">Training a New Model for your Project</span></a></p>
 </div>
-<p>The HTTP api exists to make it easy for non-python projects to use rasa NLU,
+<p>The HTTP api exists to make it easy for non-python projects to use Rasa NLU,
 and to make it trivial for projects currently using wit/LUIS/Dialogflow
 to try it out.</p>
 <div class="section" id="running-the-server">
@@ -236,13 +237,13 @@ trained model.</p>
 </div>
 <div class="section" id="emulation">
 <h2>Emulation<a class="headerlink" href="#emulation" title="Permalink to this headline">¶</a></h2>
-<p>rasa NLU can &#8216;emulate&#8217; any of these three services by making the <code class="docutils literal"><span class="pre">/parse</span></code>
+<p>Rasa NLU can &#8216;emulate&#8217; any of these three services by making the <code class="docutils literal"><span class="pre">/parse</span></code>
 endpoint compatible with your existing code. To activate this, either add
 <code class="docutils literal"><span class="pre">'emulate'</span> <span class="pre">:</span> <span class="pre">'luis'</span></code> to your config file or run the server with <code class="docutils literal"><span class="pre">-e</span> <span class="pre">luis</span></code>.
 For example, if you would normally send your text to be parsed to LUIS,
 you would make a <code class="docutils literal"><span class="pre">GET</span></code> request to</p>
 <p><code class="docutils literal"><span class="pre">https://api.projectoxford.ai/luis/v2.0/apps/&lt;app-id&gt;?q=hello%20there</span></code></p>
-<p>in luis emulation mode you can call rasa by just sending this request to</p>
+<p>in luis emulation mode you can call Rasa by just sending this request to</p>
 <p><code class="docutils literal"><span class="pre">http://localhost:5000/parse?q=hello%20there</span></code></p>
 <p>any extra query params are ignored by rasa, so you can safely send them along.</p>
 <p>To use the emulation, pass the emulation mode to the server script:</p>
@@ -410,16 +411,16 @@ also returns a list of available projects the server can use to fulfill <code cl
 </div>
 <div class="section" id="authorization">
 <span id="section-auth"></span><h2>Authorization<a class="headerlink" href="#authorization" title="Permalink to this headline">¶</a></h2>
-<p>To protect your server, you can specify a token in your rasa NLU configuration, e.g. by adding <code class="docutils literal"><span class="pre">&quot;token&quot;</span> <span class="pre">:</span> <span class="pre">&quot;12345&quot;</span></code> to your config file, or by setting the <code class="docutils literal"><span class="pre">RASA_TOKEN</span></code> environment variable.
+<p>To protect your server, you can specify a token in your Rasa NLU configuration, e.g. by adding <code class="docutils literal"><span class="pre">&quot;token&quot;</span> <span class="pre">:</span> <span class="pre">&quot;12345&quot;</span></code> to your config file, or by setting the <code class="docutils literal"><span class="pre">RASA_TOKEN</span></code> environment variable.
 If set, this token must be passed as a query parameter in all requests, e.g. :</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ curl localhost:5000/status?token<span class="o">=</span><span class="m">12345</span>
 </pre></div>
 </div>
-<p>On default CORS (cross-origin resource sharing) calls are not allowed. If you want to call your rasa NLU server from another domain (for example from a training web UI) then you can whitelist that domain by adding it to the config value <code class="docutils literal"><span class="pre">cors_origin</span></code>.</p>
+<p>On default CORS (cross-origin resource sharing) calls are not allowed. If you want to call your Rasa NLU server from another domain (for example from a training web UI) then you can whitelist that domain by adding it to the config value <code class="docutils literal"><span class="pre">cors_origin</span></code>.</p>
 </div>
 <div class="section" id="serving-multiple-apps">
 <span id="section-http-config"></span><h2>Serving Multiple Apps<a class="headerlink" href="#serving-multiple-apps" title="Permalink to this headline">¶</a></h2>
-<p>Depending on your choice of backend, rasa NLU can use quite a lot of memory.
+<p>Depending on your choice of backend, Rasa NLU can use quite a lot of memory.
 So if you are serving multiple models in production, you want to serve these
 from the same process &amp; avoid duplicating the memory load.</p>
 <dl class="docutils">
@@ -492,7 +493,7 @@ under the <code class="docutils literal"><span class="pre">path</span></code> di
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="python.html" class="btn btn-neutral float-right" title="Using rasa NLU from python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="python.html" class="btn btn-neutral float-right" title="Using Rasa NLU from python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="dataformat.html" class="btn btn-neutral" title="Training and Data Format" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Using rasa NLU from python &mdash; rasa NLU 0.12.0a2 documentation</title>
+  <title>Using Rasa NLU from python &mdash; Rasa NLU 0.12.0a2 documentation</title>
   
 
   
@@ -37,9 +37,9 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="rasa NLU 0.12.0a2 documentation" href="index.html"/>
+    <link rel="top" title="Rasa NLU 0.12.0a2 documentation" href="index.html"/>
         <link rel="next" title="Entity Extraction" href="entities.html"/>
-        <link rel="prev" title="Using rasa NLU as a HTTP server" href="http.html"/>
+        <link rel="prev" title="Using Rasa NLU as a HTTP server" href="http.html"/>
 <link href="_static/css/rasa_theme.css" rel="stylesheet" type="text/css">
 
 
@@ -60,7 +60,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> rasa NLU
+            <a href="index.html" class="icon icon-home"> Rasa NLU
           
 
           
@@ -104,8 +104,8 @@
 <li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating an existing app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataformat.html">Training and Data Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="http.html">Using rasa NLU as a HTTP server</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Using rasa NLU from python</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="http.html">Using Rasa NLU as a HTTP server</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using Rasa NLU from python</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#training-time">Training Time</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#prediction-time">Prediction Time</a></li>
 </ul>
@@ -116,6 +116,7 @@
 <li class="toctree-l1"><a class="reference internal" href="languages.html">Language Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pipeline.html">Processing Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="context.html">Context-aware Dialogue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrations.html">Migration Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
@@ -143,7 +144,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">rasa NLU</a>
+          <a href="index.html">Rasa NLU</a>
         
       </nav>
 
@@ -173,7 +174,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Using rasa NLU from python</li>
+      <li>Using Rasa NLU from python</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -200,10 +201,10 @@
 
 
 
-    <p class="scv-banner scv-sphinx_rtd_theme"><a href="../0.11.4/python.html"><b>Warning:</b> This document is for the development version of rasa NLU. The latest version is 0.11.4.</a></p>
+    <p class="scv-banner scv-sphinx_rtd_theme"><a href="../0.11.4/python.html"><b>Warning:</b> This document is for the development version of Rasa NLU. The latest version is 0.11.4.</a></p>
 <div class="section" id="using-rasa-nlu-from-python">
-<span id="section-python"></span><h1>Using rasa NLU from python<a class="headerlink" href="#using-rasa-nlu-from-python" title="Permalink to this headline">¶</a></h1>
-<p>Apart from running rasa NLU as a HTTP server you can use it directly in your python program.
+<span id="section-python"></span><h1>Using Rasa NLU from python<a class="headerlink" href="#using-rasa-nlu-from-python" title="Permalink to this headline">¶</a></h1>
+<p>Apart from running Rasa NLU as a HTTP server you can use it directly in your python program.
 Rasa NLU supports both Python 2 and 3.</p>
 <div class="section" id="training-time">
 <h2>Training Time<a class="headerlink" href="#training-time" title="Permalink to this headline">¶</a></h2>
@@ -223,7 +224,7 @@ Or, you can train directly in python with a script like the following (using spa
 </div>
 <div class="section" id="prediction-time">
 <h2>Prediction Time<a class="headerlink" href="#prediction-time" title="Permalink to this headline">¶</a></h2>
-<p>You can call rasa NLU directly from your python script. To do so, you need to load the metadata of
+<p>You can call Rasa NLU directly from your python script. To do so, you need to load the metadata of
 your model and instantiate an interpreter. The <code class="docutils literal"><span class="pre">metadata.json</span></code> in your model dir contains the
 necessary info to recover your model:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rasa_nlu.model</span> <span class="k">import</span> <span class="n">Metadata</span><span class="p">,</span> <span class="n">Interpreter</span>
@@ -283,7 +284,7 @@ a <code class="docutils literal"><span class="pre">ComponentBuilder</span></code
         <a href="entities.html" class="btn btn-neutral float-right" title="Entity Extraction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="http.html" class="btn btn-neutral" title="Using rasa NLU as a HTTP server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="http.html" class="btn btn-neutral" title="Using Rasa NLU as a HTTP server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

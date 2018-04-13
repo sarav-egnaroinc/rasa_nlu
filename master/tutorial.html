@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tutorial: A simple restaurant search bot &mdash; rasa NLU 0.12.0a2 documentation</title>
+  <title>Tutorial: A simple restaurant search bot &mdash; Rasa NLU 0.12.0a2 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="rasa NLU 0.12.0a2 documentation" href="index.html"/>
+    <link rel="top" title="Rasa NLU 0.12.0a2 documentation" href="index.html"/>
         <link rel="next" title="Configuration" href="config.html"/>
         <link rel="prev" title="Installation" href="installation.html"/>
 <link href="_static/css/rasa_theme.css" rel="stylesheet" type="text/css">
@@ -60,7 +60,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> rasa NLU
+            <a href="index.html" class="icon icon-home"> Rasa NLU
           
 
           
@@ -110,14 +110,15 @@
 <li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating an existing app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataformat.html">Training and Data Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="http.html">Using rasa NLU as a HTTP server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python.html">Using rasa NLU from python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http.html">Using Rasa NLU as a HTTP server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Using Rasa NLU from python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">Entity Extraction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="closeloop.html">Improving your models from feedback</a></li>
 <li class="toctree-l1"><a class="reference internal" href="persist.html">Model Persistence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="languages.html">Language Support</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pipeline.html">Processing Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="context.html">Context-aware Dialogue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrations.html">Migration Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
@@ -145,7 +146,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">rasa NLU</a>
+          <a href="index.html">Rasa NLU</a>
         
       </nav>
 
@@ -202,7 +203,7 @@
 
 
 
-    <p class="scv-banner scv-sphinx_rtd_theme"><a href="../0.11.4/tutorial.html"><b>Warning:</b> This document is for the development version of rasa NLU. The latest version is 0.11.4.</a></p>
+    <p class="scv-banner scv-sphinx_rtd_theme"><a href="../0.11.4/tutorial.html"><b>Warning:</b> This document is for the development version of Rasa NLU. The latest version is 0.11.4.</a></p>
 <div class="section" id="tutorial-a-simple-restaurant-search-bot">
 <span id="tutorial"></span><span id="section-tutorial"></span><h1>Tutorial: A simple restaurant search bot<a class="headerlink" href="#tutorial-a-simple-restaurant-search-bot" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
@@ -232,7 +233,7 @@ categorized into one of the following <strong>intents</strong>:</p>
 <li><cite>I&#8217;m in the North of town and I want chinese food</cite></li>
 <li><cite>I&#8217;m hungry</cite></li>
 </ul>
-<p>The first job of rasa NLU is to assign any given sentence to one of
+<p>The first job of Rasa NLU is to assign any given sentence to one of
 the <strong>intent</strong> categories: <code class="docutils literal"><span class="pre">greet</span></code>, <code class="docutils literal"><span class="pre">restaurant_search</span></code>, or <code class="docutils literal"><span class="pre">thankyou</span></code>.</p>
 <p>The second job is to label words like &#8220;Mexican&#8221; and &#8220;center&#8221; as
 <code class="docutils literal"><span class="pre">cuisine</span></code> and <code class="docutils literal"><span class="pre">location</span></code> <strong>entities</strong>, respectively.
@@ -328,7 +329,7 @@ base configuration:</p>
 <li><strong>path</strong>: output path where the model is persisted to</li>
 </ul>
 <p>If you want to know more about the parameters, there is an overview of the
-<a class="reference internal" href="config.html#section-configuration"><span class="std std-ref">Configuration</span></a>. After a few minutes, rasa NLU will finish
+<a class="reference internal" href="config.html#section-configuration"><span class="std std-ref">Configuration</span></a>. After a few minutes, Rasa NLU will finish
 training, and you&#8217;ll see a new folder named as
 <code class="docutils literal"><span class="pre">projects/default/model_YYYYMMDD-HHMMSS</span></code> with the timestamp
 when training finished.</p>
@@ -341,7 +342,7 @@ a &#8220;default&#8221; one will be used, itself using the latest trained model.
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> python -m rasa_nlu.server --path projects
 </pre></div>
 </div>
-<p>More information about starting the server can be found in <a class="reference internal" href="http.html#section-http"><span class="std std-ref">Using rasa NLU as a HTTP server</span></a>.</p>
+<p>More information about starting the server can be found in <a class="reference internal" href="http.html#section-http"><span class="std std-ref">Using Rasa NLU as a HTTP server</span></a>.</p>
 <p>You can then test your new model by sending a request. Open a new window
 on your terminal and run</p>
 <div class="admonition note">

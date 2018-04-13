@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Processing Pipeline &mdash; rasa NLU 0.12.0a2 documentation</title>
+  <title>Processing Pipeline &mdash; Rasa NLU 0.12.0a2 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="rasa NLU 0.12.0a2 documentation" href="index.html"/>
+    <link rel="top" title="Rasa NLU 0.12.0a2 documentation" href="index.html"/>
         <link rel="next" title="Evaluation" href="evaluation.html"/>
         <link rel="prev" title="Language Support" href="languages.html"/>
 <link href="_static/css/rasa_theme.css" rel="stylesheet" type="text/css">
@@ -60,7 +60,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> rasa NLU
+            <a href="index.html" class="icon icon-home"> Rasa NLU
           
 
           
@@ -104,8 +104,8 @@
 <li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrating.html">Migrating an existing app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataformat.html">Training and Data Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="http.html">Using rasa NLU as a HTTP server</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python.html">Using rasa NLU from python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http.html">Using Rasa NLU as a HTTP server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">Using Rasa NLU from python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="entities.html">Entity Extraction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="closeloop.html">Improving your models from feedback</a></li>
 <li class="toctree-l1"><a class="reference internal" href="persist.html">Model Persistence</a></li>
@@ -139,6 +139,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="context.html">Context-aware Dialogue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrations.html">Migration Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
@@ -166,7 +167,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">rasa NLU</a>
+          <a href="index.html">Rasa NLU</a>
         
       </nav>
 
@@ -223,7 +224,7 @@
 
 
 
-    <p class="scv-banner scv-sphinx_rtd_theme"><a href="../0.11.4/pipeline.html"><b>Warning:</b> This document is for the development version of rasa NLU. The latest version is 0.11.4.</a></p>
+    <p class="scv-banner scv-sphinx_rtd_theme"><a href="../0.11.4/pipeline.html"><b>Warning:</b> This document is for the development version of Rasa NLU. The latest version is 0.11.4.</a></p>
 <div class="section" id="processing-pipeline">
 <span id="section-pipeline"></span><h1>Processing Pipeline<a class="headerlink" href="#processing-pipeline" title="Permalink to this headline">¶</a></h1>
 <p>The process of incoming messages is split into different components. These components are executed one after another
@@ -281,7 +282,7 @@ Here is a list of the existing templates:</p>
 </tr>
 </tbody>
 </table>
-<p>Creating your own pipelines is possible by directly passing the names of the components to rasa NLU in the <code class="docutils literal"><span class="pre">pipeline</span></code>
+<p>Creating your own pipelines is possible by directly passing the names of the components to Rasa NLU in the <code class="docutils literal"><span class="pre">pipeline</span></code>
 configuration variable, e.g.</p>
 <div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">pipeline</span><span class="p p-Indicator">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;nlp_spacy&quot;</span>
@@ -986,10 +987,17 @@ A full list of available dimensions can be found in the <a class="reference exte
 </div>
 <div class="section" id="creating-new-components">
 <h2>Creating new Components<a class="headerlink" href="#creating-new-components" title="Permalink to this headline">¶</a></h2>
-<p>Currently you need to rely on the components that are shipped with rasa NLU, but we plan to add the possibility to
-create your own components in your code. Nevertheless, we are looking forward to your contribution of a new component
-(e.g. a component to do sentiment analysis). A glimpse into the code of <code class="docutils literal"><span class="pre">rasa_nlu.components.Component</span></code> will reveal
-which functions need to be implemented to create a new component.</p>
+<p>You can create a custom Component to perform a specific task which NLU doesn&#8217;t currently offer (e.g. sentiment analysis).
+A glimpse into the code of <code class="docutils literal"><span class="pre">rasa_nlu.components.Component</span></code> will reveal
+which functions need to be implemented to create a new component.
+You can add these to your pipeline by adding the module path to your pipeline, e.g. if you have a module called <code class="docutils literal"><span class="pre">sentiment</span></code>
+containing a <code class="docutils literal"><span class="pre">SentimentAnalyzer</span></code> class:</p>
+<blockquote>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">pipeline</span><span class="p p-Indicator">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;sentiment.SentimentAnalyzer&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 <div class="section" id="component-lifecycle">
 <h2>Component Lifecycle<a class="headerlink" href="#component-lifecycle" title="Permalink to this headline">¶</a></h2>
