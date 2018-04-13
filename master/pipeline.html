@@ -113,16 +113,21 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Processing Pipeline</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#pre-configured-pipelines">Pre-configured Pipelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#built-in-components">Built-in Components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nlp-mitie">nlp_mitie</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nlp-spacy">nlp_spacy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#intent-featurizer-mitie">intent_featurizer_mitie</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#intent-featurizer-spacy">intent_featurizer_spacy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#intent-featurizer-ngrams">intent_featurizer_ngrams</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#intent-featurizer-count-vectors">intent_featurizer_count_vectors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#intent-classifier-keyword">intent_classifier_keyword</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#intent-classifier-mitie">intent_classifier_mitie</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#intent-classifier-sklearn">intent_classifier_sklearn</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#intent-classifier-tensorflow-embedding">intent_classifier_tensorflow_embedding</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#intent-entity-featurizer-regex">intent_entity_featurizer_regex</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tokenizer-whitespace">tokenizer_whitespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tokenizer-mitie">tokenizer_mitie</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tokenizer-spacy">tokenizer_spacy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ner-mitie">ner_mitie</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ner-spacy">ner_spacy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ner-synonyms">ner_synonyms</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ner-crf">ner_crf</a></li>
@@ -262,6 +267,12 @@ Here is a list of the existing templates:</p>
 <tr class="row-even"><td>spacy_sklearn</td>
 <td><code class="docutils literal"><span class="pre">[&quot;nlp_spacy&quot;,</span> <span class="pre">&quot;tokenizer_spacy&quot;,</span> <span class="pre">&quot;intent_entity_featurizer_regex&quot;,</span> <span class="pre">&quot;intent_featurizer_spacy&quot;,</span> <span class="pre">&quot;ner_crf&quot;,</span> <span class="pre">&quot;ner_synonyms&quot;,</span>&#160; <span class="pre">&quot;intent_classifier_sklearn&quot;]</span></code></td>
 </tr>
+<tr class="row-odd"><td>mitie</td>
+<td><code class="docutils literal"><span class="pre">[&quot;nlp_mitie&quot;,</span> <span class="pre">&quot;tokenizer_mitie&quot;,</span> <span class="pre">&quot;ner_mitie&quot;,</span> <span class="pre">&quot;ner_synonyms&quot;,</span> <span class="pre">&quot;intent_entity_featurizer_regex&quot;,</span> <span class="pre">&quot;intent_classifier_mitie&quot;]</span></code></td>
+</tr>
+<tr class="row-even"><td>mitie_sklearn</td>
+<td><code class="docutils literal"><span class="pre">[&quot;nlp_mitie&quot;,</span> <span class="pre">&quot;tokenizer_mitie&quot;,</span> <span class="pre">&quot;ner_mitie&quot;,</span> <span class="pre">&quot;ner_synonyms&quot;,</span> <span class="pre">&quot;intent_entity_featurizer_regex&quot;,</span> <span class="pre">&quot;intent_featurizer_mitie&quot;,</span> <span class="pre">&quot;intent_classifier_sklearn&quot;]</span></code></td>
+</tr>
 <tr class="row-odd"><td>keyword</td>
 <td><code class="docutils literal"><span class="pre">[&quot;intent_classifier_keyword&quot;]</span></code></td>
 </tr>
@@ -287,6 +298,37 @@ Hence, the output will not contain any useful intents.</p>
 a look at the corresponding source code for the component. <code class="docutils literal"><span class="pre">Output</span></code> describes, what each component adds to the final
 output result of processing a message. If no output is present, the component is most likely a preprocessor for another
 component.</p>
+<div class="section" id="nlp-mitie">
+<h3>nlp_mitie<a class="headerlink" href="#nlp-mitie" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Short:</th><td class="field-body"><p class="first">MITIE initializer</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Outputs:</th><td class="field-body"><p class="first">nothing</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body"><p class="first">Initializes mitie structures. Every mitie component relies on this, hence this should be put at the beginning
+of every pipeline that uses any mitie components.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Configuration:</th><td class="field-body"><p class="first">The MITIE library needs a language model file, that <strong>must</strong> be specified in
+the configuration:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">pipeline</span><span class="p p-Indicator">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;nlp_mitie&quot;</span>
+  <span class="c1"># language model to load</span>
+  <span class="l l-Scalar l-Scalar-Plain">model</span><span class="p p-Indicator">:</span> <span class="s">&quot;data/total_word_feature_extractor.dat&quot;</span>
+</pre></div>
+</div>
+<p class="last">For more information where to get that file from, head over to
+<a class="reference internal" href="installation.html#section-backends"><span class="std std-ref">Installation</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="nlp-spacy">
 <h3>nlp_spacy<a class="headerlink" href="#nlp-spacy" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
@@ -310,6 +352,35 @@ the model name can be specified using this configuration variable. The name will
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;nlp_spacy&quot;</span>
   <span class="c1"># language model to load</span>
   <span class="l l-Scalar l-Scalar-Plain">model</span><span class="p p-Indicator">:</span> <span class="s">&quot;en_core_web_md&quot;</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="intent-featurizer-mitie">
+<h3>intent_featurizer_mitie<a class="headerlink" href="#intent-featurizer-mitie" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Short:</th><td class="field-body"><p class="first">MITIE intent featurizer</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Outputs:</th><td class="field-body"><p class="first">nothing, used as an input to intent classifiers that need intent features (e.g. <code class="docutils literal"><span class="pre">intent_classifier_sklearn</span></code>)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body"><p class="first">Creates feature for intent classification using the MITIE featurizer.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">NOT used by the <code class="docutils literal"><span class="pre">intent_classifier_mitie</span></code> component. Currently, only <code class="docutils literal"><span class="pre">intent_classifier_sklearn</span></code> is able
+to use precomputed features.</p>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Configuration:</th><td class="field-body"><div class="first last highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">pipeline</span><span class="p p-Indicator">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;intent_featurizer_mitie&quot;</span>
 </pre></div>
 </div>
 </td>
@@ -434,6 +505,38 @@ for detailed description of the configuration parameters</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><p class="first last">This classifier is mostly used as a placeholder. It is able to recognize <cite>hello</cite> and
 <cite>goodbye</cite> intents by searching for these keywords in the passed messages.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="intent-classifier-mitie">
+<h3>intent_classifier_mitie<a class="headerlink" href="#intent-classifier-mitie" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Short:</th><td class="field-body"><p class="first">MITIE intent classifier (using a <a class="reference external" href="https://github.com/mit-nlp/MITIE/blob/master/examples/python/text_categorizer_pure_model.py">text categorizer</a>)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Outputs:</th><td class="field-body"><p class="first"><code class="docutils literal"><span class="pre">intent</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Output-Example:</th><td class="field-body"><div class="first highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;intent&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;greet&quot;</span><span class="p">,</span> <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="mf">0.98343</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><p class="first">This classifier uses MITIE to perform intent classification. The underlying classifier
+is using a multi class linear SVM with a sparse linear kernel (see <a class="reference external" href="https://github.com/mit-nlp/MITIE/blob/master/mitielib/src/text_categorizer_trainer.cpp#L222">mitie trainer code</a>).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Configuration:</th><td class="field-body"><div class="first last highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">pipeline</span><span class="p p-Indicator">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;intent_classifier_mitie&quot;</span>
+</pre></div>
+</div>
 </td>
 </tr>
 </tbody>
@@ -606,9 +709,32 @@ feature indicates a certain intent). Regex features for entity extraction are cu
 </tr>
 <tr class="field-even field"><th class="field-name">Outputs:</th><td class="field-body">nothing</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Creates a token for every whitespace separated character sequence. This
-tokenizer can not be used together with spaCy. spaCy has a build-in
-tokenizer it will use.</td>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Creates a token for every whitespace separated character sequence. Can be used to define tokesn for the MITIE entity
+extractor.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="tokenizer-mitie">
+<h3>tokenizer_mitie<a class="headerlink" href="#tokenizer-mitie" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Short:</th><td class="field-body"><p class="first">Tokenizer using MITIE</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Outputs:</th><td class="field-body"><p class="first">nothing</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body"><p class="first">Creates tokens using the MITIE tokenizer. Can be used to define tokens for the MITIE entity extractor.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Configuration:</th><td class="field-body"><div class="first last highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">pipeline</span><span class="p p-Indicator">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;tokenizer_mitie&quot;</span>
+</pre></div>
+</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -623,7 +749,45 @@ tokenizer it will use.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Outputs:</th><td class="field-body">nothing</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Creates tokens using the spacy tokenizer.</td>
+<tr class="field-odd field"><th class="field-name">Description:</th><td class="field-body">Creates tokens using the spacy tokenizer. Can be used to define tokens for the MITIE entity extractor.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ner-mitie">
+<h3>ner_mitie<a class="headerlink" href="#ner-mitie" title="Permalink to this headline">¶</a></h3>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Short:</th><td class="field-body"><p class="first">MITIE entity extraction (using a <a class="reference external" href="https://github.com/mit-nlp/MITIE/blob/master/mitielib/src/ner_trainer.cpp">mitie ner trainer</a>)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Outputs:</th><td class="field-body"><p class="first">appends <code class="docutils literal"><span class="pre">entities</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Output-Example:</th><td class="field-body"><div class="first highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;entities&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;New York City&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;start&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+                  <span class="nt">&quot;end&quot;</span><span class="p">:</span> <span class="mi">33</span><span class="p">,</span>
+                  <span class="nt">&quot;confidence&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+                  <span class="nt">&quot;entity&quot;</span><span class="p">:</span> <span class="s2">&quot;city&quot;</span><span class="p">,</span>
+                  <span class="nt">&quot;extractor&quot;</span><span class="p">:</span> <span class="s2">&quot;ner_mitie&quot;</span><span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body"><p class="first">This uses the MITIE entitiy extraction to find entities in a message. The underlying classifier
+is using a multi class linear SVM with a sparse linear kernel and custom features.
+The MITIE component does not provide entity confidence values.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Configuration:</th><td class="field-body"><div class="first last highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">pipeline</span><span class="p p-Indicator">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ner_mitie&quot;</span>
+</pre></div>
+</div>
+</td>
 </tr>
 </tbody>
 </table>

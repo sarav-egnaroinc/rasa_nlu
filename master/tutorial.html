@@ -300,6 +300,20 @@ called <code class="docutils literal"><span class="pre">config_spacy.yml</span><
 <span class="l l-Scalar l-Scalar-Plain">pipeline</span><span class="p p-Indicator">:</span> <span class="s">&quot;spacy_sklearn&quot;</span>
 </pre></div>
 </div>
+<p>or if you&#8217;ve installed the MITIE backend, you can use the following as your
+base configuration:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">language</span><span class="p p-Indicator">:</span> <span class="s">&quot;en&quot;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">pipeline</span><span class="p p-Indicator">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;nlp_mitie&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">model</span><span class="p p-Indicator">:</span> <span class="s">&quot;data/total_word_feature_extractor.dat&quot;</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;tokenizer_mitie&quot;</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ner_mitie&quot;</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ner_synonyms&quot;</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;intent_entity_featurizer_regex&quot;</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;intent_classifier_mitie&quot;</span>
+</pre></div>
+</div>
 <p>Now we can train a spacy model by running:</p>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> python -m rasa_nlu.train <span class="se">\</span>
     --config sample_configs/config_spacy.yml <span class="se">\</span>
@@ -392,6 +406,13 @@ intent classification this will be a probability.</p>
 <p>You can use this to do some error handling in your chatbot (ex:
 asking the user again if the confidence is low) and it&#8217;s also
 helpful for prioritising which intents need more training data.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The output may contain other or less attributes, depending on the
+pipeline you are using. For example, the <code class="docutils literal"><span class="pre">mitie</span></code> pipeline doesn&#8217;t
+include the <code class="docutils literal"><span class="pre">&quot;intent_ranking&quot;</span></code> (see example below) whereas the
+<code class="docutils literal"><span class="pre">spacy_sklearn</span></code> pipeline does (see example above).</p>
+</div>
 <p>With very little data, rasa NLU can in certain cases
 already generalise concepts, for example:</p>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> curl -X POST localhost:5000/parse -d <span class="s1">&#39;{&quot;q&quot;:&quot;I want some italian food&quot;}&#39;</span> <span class="p">|</span> python -m json.tool
