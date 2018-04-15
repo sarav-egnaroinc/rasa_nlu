@@ -207,7 +207,14 @@
     <p class="scv-banner scv-sphinx_rtd_theme"><a href="../0.11.4/languages.html"><b>Warning:</b> This document is for the development version of Rasa NLU. The latest version is 0.11.4.</a></p>
 <div class="section" id="language-support">
 <span id="section-languages"></span><h1>Language Support<a class="headerlink" href="#language-support" title="Permalink to this headline">¶</a></h1>
-<p>Currently Rasa NLU is tested and readily available for the following languages:</p>
+<p>Rasa NLU supports a number of different languages. Exactly which ones depends on
+the backend you are using, and the features you require.</p>
+<p>Firstly, the <code class="docutils literal"><span class="pre">tensorflow_embedding</span></code> pipeline in principle supports any language,
+but only performs intent classification.
+In addition, with the spaCy backend you can now load fastText vectors, which are available
+for <a class="reference external" href="https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md">hundreds of languages</a>.</p>
+<p>For both intent and entity recognition, the following languages and backend combinations
+are tested and available:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="30%" />
